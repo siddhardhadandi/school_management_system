@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="content">
+        <h1>Welcome to the Admin Dashboard</h1>
+        <p>You have successfully logged in as an admin.</p>
+
+        <h3>Manage Students</h3>
+        <a href="{{ url_for('add_student') }}" class="btn">Add Student</a>
+        <ul>
+            {% for student in students %}
+                <li>{{ student.name }} ({{ student.roll_number }}) - class: {{ student.subject }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Manage Teachers</h3>
+        <a href="{{ url_for('add_teacher') }}" class="btn">Add Teacher</a>
+        <ul>
+            {% for teacher in teachers %}
+                <li>{{ teacher.name }} ({{ teacher.teacher_id }}) - Subject: {{ teacher.subject }}</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>
